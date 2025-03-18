@@ -9,7 +9,7 @@ export const InicioRoutes: Routes = [
       {
         path: '',
         loadComponent: async () => 
-          import('./principal/principal.component').then(
+          import('./pricipal/principal.component').then(
             (module) => module.PrincipalComponent
           ),
       },
