@@ -1,0 +1,178 @@
+<ng-container [ngSwitch]="variante">
+  <!-- Caso Link -->
+  <ng-container *ngSwitchCase="'enlace'">
+    <ng-container *ngIf="enlaceExterno; else enlaceInterno">
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-sm text-gris-600 hover:text-vinotinto-900 transition-colors flex items-center gap-1 group"
+        [href]="enlaceRuta"
+      >
+        <span
+          [ngClass]="{
+            'flex items-center justify-center': true,
+            'flex-row-reverse': posicionIcono === 'izquierda'
+          }"
+        >
+          {{ texto }}
+          <span
+            [ngClass]="
+              (posicionIcono === 'izquierda'
+                ? icono + ' h-4 w-4'
+                : icono + ' h-4 w-4') +
+              (soloEnHover
+                ? ' opacity-0 group-hover:opacity-100 transition-opacity'
+                : '')
+            "
+          ></span>
+        </span>
+      </a>
+    </ng-container>
+    <ng-template #enlaceInterno>
+      <a
+        class="text-sm text-gris-600 hover:text-vinotinto-900 transition-colors flex items-center gap-1 group"
+        [routerLink]="enlaceRuta"
+      >
+        <span
+          [ngClass]="{
+            'flex items-center justify-center': true,
+            'flex-row-reverse': posicionIcono === 'izquierda'
+          }"
+        >
+          {{ texto }}
+          <span
+            [ngClass]="
+              (posicionIcono === 'izquierda'
+                ? icono + ' h-4 w-4'
+                : icono + ' h-4 w-4') +
+              (soloEnHover
+                ? ' opacity-0 group-hover:opacity-100 transition-opacity'
+                : '')
+            "
+          ></span>
+        </span>
+      </a>
+    </ng-template>
+  </ng-container>
+
+  <!-- Caso Enlace Activo -->
+  <ng-container *ngSwitchCase="'enlace-activo'">
+    <ng-container *ngIf="enlaceExterno; else enlaceActivoInterno">
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-sm text-vinotinto-900 transition-colors flex items-center gap-1 group"
+        [href]="enlaceRuta"
+      >
+        <span
+          [ngClass]="{
+            'flex items-center justify-center': true,
+            'flex-row-reverse': posicionIcono === 'izquierda'
+          }"
+        >
+          {{ texto }}
+          <span
+            [ngClass]="
+              (posicionIcono === 'izquierda'
+                ? icono +
+                  ' h-4 w-4 transition-all duration-200 group-hover:scale-110'
+                : icono +
+                  ' h-4 w-4 transition-all duration-200 group-hover:scale-110') +
+              (soloEnHover
+                ? ' opacity-0 group-hover:opacity-100 transition-opacity'
+                : '')
+            "
+          ></span>
+        </span>
+      </a>
+    </ng-container>
+    <ng-template #enlaceActivoInterno>
+      <a
+        class="text-sm text-vinotinto-900 transition-colors flex items-center gap-1 group"
+        [routerLink]="enlaceRuta"
+      >
+        <span
+          [ngClass]="{
+            'flex items-center justify-center': true,
+            'flex-row-reverse': posicionIcono === 'izquierda'
+          }"
+        >
+          {{ texto }}
+          <span
+            [ngClass]="
+              (posicionIcono === 'izquierda'
+                ? icono +
+                  ' h-4 w-4 transition-all duration-200 group-hover:scale-110'
+                : icono +
+                  ' h-4 w-4 transition-all duration-200 group-hover:scale-110') +
+              (soloEnHover
+                ? ' opacity-0 group-hover:opacity-100 transition-opacity'
+                : '')
+            "
+          ></span>
+        </span>
+      </a>
+    </ng-template>
+  </ng-container>
+
+  <!-- Botones (variantes primario y secundario, etc.) -->
+  <button
+    *ngSwitchDefault
+    type="submit"
+    [disabled]="cargando || deshabilitado"
+    [ngClass]="{
+      'w-full bg-gradient-to-r py-2.5 rounded-lg transition-all duration-300 transform active:scale-95 shadow-md cursor-pointer': true,
+      'bg-vinotinto-900 hover:bg-vinotinto-800 text-white':
+        variante === 'primario',
+      'bg-ocre-600 hover:bg-ocre-500 text-black': variante === 'secundario'
+    }"
+  >
+    <ng-container *ngIf="cargando; else btnContent">
+      <ng-container *ngTemplateOutlet="loadingTpl" />
+    </ng-container>
+    <ng-template #btnContent>
+      <span
+        [ngClass]="{
+          'flex items-center justify-center': true,
+          'flex-row-reverse': posicionIcono === 'izquierda'
+        }"
+      >
+        {{ texto }}
+        <span
+          [ngClass]="
+            posicionIcono === 'izquierda'
+              ? icono + ' mr-2 h-4 w-4'
+              : icono + ' ml-2 h-4 w-4'
+          "
+        ></span>
+      </span>
+    </ng-template>
+  </button>
+
+  <!-- Template de carga -->
+  <ng-template #loadingTpl>
+    <div class="flex items-center justify-center cursor-pointer">
+      <svg
+        class="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <circle
+          class="opacity-25"
+          cx="12"
+          cy="12"
+          r="10"
+          stroke="currentColor"
+          strokeWidth="4"
+        />
+        <path
+          class="opacity-75"
+          fill="currentColor"
+          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+        />
+      </svg>
+      {{ textoCargando }}
+    </div>
+  </ng-template>
+</ng-container>

@@ -1,0 +1,38 @@
+<div class="w-full max-w-md">
+  <div class="flex flex-col items-center mb-8 md:hidden">
+    <img
+      src="https://www.usco.edu.co/imagen-institucional/logo/universidad-surcolombiana-v.png"
+      alt="Universidad Surcolombiana Logo"
+      width="80"
+      height="80"
+      class="mb-4"
+    />
+    <div class="flex items-center gap-2 mb-2">
+      <h1 class="text-xl font-bold">UNIVERSIDAD SURCOLOMBIANA</h1>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+    <div
+      class="bg-gradient-to-r from-vinotinto-900 to-vinotinto-900 p-6 text-white"
+    >
+      <h2 class="text-2xl font-bold">{{titulo}}</h2>
+      <p class="text-white/80 text-sm mt-1">
+        {{subtitulo}}
+      </p>
+    </div>
+
+    <ng-content select="[contenido-modal]" />
+  </div>
+
+  <div class="mt-8 text-center text-sm text-gray-500">
+    <p>
+      © {{ fechaActual }} Universidad Surcolombiana - Todos los derechos
+      reservados
+    </p>
+    <p class="text-xs mt-1">
+      Acreditación Institucional de Alta Calidad Multicampus
+    </p>
+  </div>
+</div>
+

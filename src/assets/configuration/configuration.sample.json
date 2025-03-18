@@ -1,0 +1,11 @@
+{
+  "api": {
+      "route": "http://localhost:8080/api"
+  },
+  "perfil": {
+     "nombreAplicacion": "Nombre de la aplicación",
+     "descripcionAplicacion": "Descripción de la aplicación",
+     "oficina": "Oficina"
+  }
+
+}

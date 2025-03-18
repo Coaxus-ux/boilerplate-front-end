@@ -1,0 +1,122 @@
+<app-autenticacion-modal
+    titulo="Verificación de Seguridad"
+    subtitulo="Ingresa el código de verificación enviado a tu correo"
+>
+  <div contenido-modal class="p-6">
+    <!-- Botón para volver al inicio de sesión -->
+    <app-boton
+      variante="enlace-activo"
+      texto="Volver al inicio de sesión"
+      icono="icon-[material-symbols--arrow-back-ios-rounded]"
+      posicionIcono="izquierda"
+      [enlaceRuta]="'/inicio-sesion'"
+    />
+
+    <!-- Sección de alertas (sólo se muestra una alerta a la vez) -->
+    <div class="mb-6">
+      <!-- Alerta de error: se muestra solo si hay error -->
+      <ng-container *ngIf="errorCodigo">
+        <app-alerta
+          [message]="requerirSegundaClave
+            ? 'El código o la contraseña secundaria ingresados no son válidos.'
+            : 'El código ingresado no es válido. Por favor verifique e intente nuevamente.'"
+          [isVisible]="true"
+          [isError]="true"
+        />
+      </ng-container>
+    
+      <!-- Alerta de código enviado: se muestra solo si NO hay error y se ha enviado el código -->
+      <ng-container *ngIf="!errorCodigo && codigoEnviado">
+        <app-alerta
+          [message]="'Se ha enviado un código de verificación a su correo registrado.'"
+          [isVisible]="true"
+          [isError]="false"
+        />
+      </ng-container>
+    </div>
+    
+    <!-- Título e instrucciones -->
+    <div class="text-center mb-6">
+      <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#7B2D2D]/10 mb-4">
+        <span class="icon-[lucide--shield] text-vinotinto-1000 h-7 w-7"></span>
+      </div>
+      <h3 class="text-lg font-medium text-gray-800">
+        Verificación en dos pasos
+      </h3>
+      <p class="text-sm text-gray-600 mt-1">
+        Ingrese el código de 5 dígitos enviado a su dispositivo
+        <span *ngIf="requerirSegundaClave"> y su contraseña secundaria</span>
+      </p>
+    </div>
+
+    <!-- Formulario del código de verificación -->
+    <form class="space-y-6" (ngSubmit)="manejarEnvioCodigo($event)">
+      <div>
+        <label for="otp" class="text-sm font-medium text-gray-700 mb-2 block">
+          Código de verificación
+        </label>
+        <div class="flex justify-center gap-2">
+          <p-inputotp
+            size="large"
+            name="otp"
+            [length]="5"
+            [(ngModel)]="codigo"
+            (complete)="manejarCodigoCompleto($event)"
+          />
+        </div>
+      </div>
+
+      <!-- Campo para contraseña secundaria (si se requiere) -->
+      <div *ngIf="requerirSegundaClave" class="space-y-2">
+        <div class="relative">
+          <app-input-forms
+            idCampo="secondPassword"
+            name="secondPassword"
+            etiqueta="Contraseña Secundaria"
+            placeholder="Ingrese su contraseña secundaria"
+            tipo="password"
+            mensajeError="La contraseña secundaria es obligatoria"
+            icono="icon-[lucide--key-round]"
+            [requerido]="true"
+            [(ngModel)]="segundaClave"
+          />
+        </div>
+        <p class="text-xs text-gray-500 mt-1">
+          Esta contraseña adicional es requerida para operaciones de alto nivel de seguridad.
+        </p>
+      </div>
+
+      <!-- Botón para verificar y acceder -->
+      <app-boton
+        variante="primario"
+        texto="Verificar y Acceder"
+        textoCargando="Verificando..."
+        icono="icon-[material-symbols--arrow-forward-ios-rounded]"
+        posicionIcono="derecha"
+        [cargando]="cargando"
+      />
+    </form>
+
+    <!-- Sección para reenvío del código -->
+    <div class="mt-6 text-center">
+      <p class="text-sm text-gray-600">
+        ¿No recibió el código?
+        <ng-container *ngIf="temporizadorReenvioCodigo > 0; else botonReenvio">
+          <span class="text-gray-500">
+            Reenviar en {{ temporizadorReenvioCodigo }} segundos
+          </span>
+        </ng-container>
+        <ng-template #botonReenvio>
+          <button
+            type="button"
+            class="text-vinotinto-900 hover:text-vinotinto-800 font-medium cursor-pointer"
+            [disabled]="cargando || temporizadorReenvioCodigo > 0"
+            (click)="reenviarCodigo()"
+          >
+            Reenviar código
+          </button>
+        </ng-template>
+      </p>
+    </div>
+  </div>
+</app-autenticacion-modal>

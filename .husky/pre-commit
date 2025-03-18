@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+if [ -f package-lock.json ] || [ -f yarn.lock ]; then
+  echo "🚨 No uses npm ni yarn. Usa pnpm."
+  exit 1
+fi
+

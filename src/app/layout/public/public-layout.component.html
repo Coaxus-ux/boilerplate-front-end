@@ -1,0 +1,52 @@
+<div class="min-h-screen flex flex-col md:flex-row">
+  <div
+    class="hidden md:flex md:w-1/2 bg-gradient-to-br from-vinotinto-1000 to-vinotinto-900 p-8 items-center justify-center"
+  >
+    <div class="max-w-md text-white">
+      <div class="mb-8">
+        <img
+          alt="Universidad Surcolombiana Logo"
+          width="150"
+          height="150"
+          class="mb-4"
+          [src]="logoUsco"
+        />
+        <h1 class="text-3xl font-bold mb-2">UNIVERSIDAD SURCOLOMBIANA</h1>
+        <div class="h-1 w-20 bg-white mb-4"></div>
+        <p class="text-lg opacity-90">
+          {{ perfilAplicacion.nombreAplicacion }}
+        </p>
+      </div>
+
+      <div class="space-y-6 mt-12">
+        <div class="flex items-start space-x-4">
+          <div class="bg-white/20 px-3 py-2 rounded-full">
+            <span class="icon-[solar--user-bold-duotone]"></span>
+          </div>
+          <div>
+            <h3 class="font-medium text-lg">Acceso Personalizado</h3>
+            <p class="opacity-80 text-sm">
+              Ingresa a tu portal académico con credenciales únicas y seguras.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-4">
+          <div class="bg-white/20 px-3 py-2 rounded-full">
+            <span class="icon-[solar--lock-bold-duotone]"></span>
+          </div>
+          <div>
+            <h3 class="font-medium text-lg">Seguridad Garantizada</h3>
+            <p class="opacity-80 text-sm">
+              Tus datos están protegidos con los más altos estándares de seguridad.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="w-full md:w-1/2 flex items-center justify-center p-4 md:p-8 bg-gray-50">
+    <router-outlet />
+  </div>
+</div>

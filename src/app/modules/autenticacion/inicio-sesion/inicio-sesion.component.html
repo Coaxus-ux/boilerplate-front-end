@@ -1,0 +1,77 @@
+<app-autenticacion-modal
+    titulo="Iniciar Sesión"
+    subtitulo="Ingresa tus credenciales para acceder al sistema"
+>
+  <div class="p-6" contenido-modal>
+    <app-alerta
+      [message]="'Usuario y/o contraseña incorrecto.'"
+      [isVisible]="error"
+    />
+
+    <form class="space-y-5" (ngSubmit)="handleSubmit($event)">
+      <div class="space-y-2">
+        <app-input-forms
+          idCampo="user"
+          name="user"
+          etiqueta="Usuario"
+          placeholder="Ingrese su usuario"
+          tipo="text"
+          mensajeError="El usuario es obligatorio"
+          icono="icon-[mdi-light--account]"
+          [requerido]="true"
+          [(ngModel)]="username"
+        />
+      </div>
+      
+      <div class="space-y-2">
+        <app-input-forms
+          idCampo="password"
+          name="password"
+          etiqueta="Contraseña"
+          placeholder="Ingrese su contraseña"
+          tipo="password"
+          mensajeError="La contraseña es obligatoria"
+          textoEnlace="¿Olvidó su contraseña?"
+          enlaceRuta="https://www.usco.edu.co/cambio_clave/"
+          icono="icon-[mdi-light--lock]"
+          [requerido]="true"
+          [enlaceExterno]="true"
+          [(ngModel)]="password"
+        />
+      </div>
+      
+
+      <app-boton
+        variante="primario"
+        texto="Ingresar al Sistema"
+        textoCargando="Procesando..."
+        icono="icon-[material-symbols--arrow-forward-ios-rounded]"
+        posicionIcono="derecha"
+        [cargando]="loading"
+      />
+    </form>
+
+    <div class="mt-8 pt-6 border-t border-gray-100">
+      <div class="flex items-center gap-2 text-sm text-gray-600 mb-3">
+        <span
+          class="icon-[material-symbols--info-outline-rounded] text-vinotinto-900 h-4 w-4"
+        ></span>
+        <span class="font-medium">Recursos de Ayuda</span>
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        <ng-container
+          *ngFor="let recurso of RecursosAyuda | keyvalue; trackBy: trackByKey"
+        >
+          <app-boton
+            variante="enlace"
+            posicionIcono="derecha"
+            icono="icon-[material-symbols--arrow-forward-ios-rounded]"
+            [soloEnHover]="true"
+            [enlaceRuta]="recurso.value.url"
+            texto="{{ recurso.value.titulo }}"
+          />
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</app-autenticacion-modal>

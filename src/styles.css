@@ -1,1 +1,104 @@
-/* You can add global styles to this file, and also import other style files */
+@plugin "@iconify/tailwind4";
+@import "tailwindcss";
+@import "primeicons/primeicons.css";
+@theme {
+  --color-success: #388212;
+  --color-success-light: #effce9;
+  --color-success-dark: #4d7c0f;
+
+  --color-error: #a40e1d;
+  --color-error-light: #fde8ea;
+  --color-error-dark: #991b1b;
+  
+  --color-primary-ciencias-politicas: #7C0B69;
+  --color-primary-ciencias-naturales: #9DC107;
+  --color-primary-ciencias-sociales:  #CE932C;
+  --color-primary-economia: #003561;
+  --color-primary-educacion: #AD142E;
+  --color-primary-ingenieria: #7D9C10;
+  --color-primary-salud: #00A4B7;
+  
+
+  --color-vinotinto-100: #f9f3f3;
+  --color-vinotinto-200: #f3e7e8;
+  --color-vinotinto-300: #e3c4c6;
+  --color-vinotinto-400: #d2a1a4;
+  --color-vinotinto-500: #c27e82;
+  --color-vinotinto-600: #b15b60;
+  --color-vinotinto-700: #a0373d;
+  --color-vinotinto-800: #8f141b;
+  --color-vinotinto-900: #7a1117;
+  --color-vinotinto-1000: #5C0E12;
+
+  --color-ocre-100: #f8f6ec;
+  --color-ocre-200: #ebe4c7;
+  --color-ocre-300: #ddd2a1;
+  --color-ocre-400: #d0c07b;
+  --color-ocre-500: #c3ad56;
+  --color-ocre-600: #a8943d;
+  --color-ocre-700: #83732f;
+  --color-ocre-800: #5e5222;
+  --color-ocre-900: #383114;
+
+  --color-gris-50: #f6f8f8;
+  --color-gris-100: #f1f3f4;
+  --color-gris-200: #d2dbe0;
+  --color-gris-300: #b5c3ca;
+  --color-gris-400: #97abb5;
+  --color-gris-500: #79939f;
+  --color-gris-600: #607a86;
+  --color-gris-700: #4a5f68;
+  --color-gris-800: #35444a;
+  --color-gris-900: #20292d;
+
+  --color-rojo-100: #fde8ea;
+  --color-rojo-200: #f9b9bf;
+  --color-rojo-300: #f58a94;
+  --color-rojo-400: #f15b69;
+  --color-rojo-500: #ed2c3f;
+  --color-rojo-600: #d31225;
+  --color-rojo-700: #a40e1d;
+  --color-rojo-800: #750a15;
+  --color-rojo-900: #46060c;
+
+  --color-verde-100: #eefad2;
+  --color-verde-200: #d9f7a6;
+  --color-verde-300: #b7e777;
+  --color-verde-400: #94d252;
+  --color-verde-500: #66b521;
+  --color-verde-600: #4d9b18;
+  --color-verde-700: #388212;
+  --color-verde-800: #266809;
+  --color-verde-900: #1a5606;
+
+  --color-azul-100: #cdfdfe;
+  --color-azul-200: #9df6fe;
+  --color-azul-300: #6ce8fd;
+  --color-azul-400: #47d4fa;
+  --color-azul-500: #0eb6f9;
+  --color-azul-600: #068ed6;
+  --color-azul-700: #086ab3;
+  --color-azul-800: #024b90;
+  --color-azul-900: #023677;
+
+  --color-amarillo-100: #fff9d5;
+  --color-amarillo-200: #fff2ae;
+  --color-amarillo-300: #feea85;
+  --color-amarillo-400: #ffe167;
+  --color-amarillo-500: #ffd336;
+  --color-amarillo-600: #dbae27;
+  --color-amarillo-700: #b68d1a;
+  --color-amarillo-800: #936e11;
+  --color-amarillo-900: #7a570a;
+
+  --color-negro-00: #000000;
+  --color-negro-100: #f2f2f2;
+  --color-negro-200: #d9d9d9;
+  --color-negro-300: #bfbfbf;
+  --color-negro-400: #a6a6a6;
+  --color-negro-500: #8c8c8c;
+  --color-negro-600: #737373;
+  --color-negro-700: #595959;
+  --color-negro-800: #404040;
+  --color-negro-900: #262626;
+}

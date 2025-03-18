@@ -1,0 +1,14 @@
+{
+  "api": {
+    "route": "http://localhost:8080/api"
+  },
+  "perfil": {
+    "nombreAplicacion": "USCO BOILERPLATE",
+    "descripcionAplicacion": "Descripción de la aplicación",
+    "oficina": "Oficina"
+  },
+  "seguridad": {
+    "segundaClave": true,
+    "token": true
+  }
+}

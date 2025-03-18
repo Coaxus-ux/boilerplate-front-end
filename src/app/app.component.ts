@@ -1,12 +1,20 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-
+import { ButtonModule } from 'primeng/button';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [ButtonModule, CommonModule, RouterModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'boilerplate-usco-v2';
+  // haz una cuenta regresiva de 20 segundos
+  public countdown = 20;
+  constructor() {
+    setInterval(() => {
+      this.countdown--;
+    }, 1000);
+  }
 }
